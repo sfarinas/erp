@@ -7,11 +7,16 @@ mydb = mysql.connector.connect(
     database = 'python'
 )
 mycursor = mydb.cursor()
+
+###  Variaveis ###
+cidade = 'Rio de Janeiro'
+IdCliente = '11'
+
 ### UPDATE tabela
 print('UPDATE CLIENTE')
-sql = "INSERT INTO cliente (Nome, Telefone, Cidade) VALUES (%s, %s, %s)"
-val = ('Silva', '45779631', 'Nigeria')
+sql = "UPDATE cliente SET Cidade = %s WHERE  idCliente = %s"
+val = (cidade, IdCliente)
 mycursor.execute(sql, val)
 mydb.commit()
-print(mycursor.rowcount, 'record(s) insert')
+print(mycursor.rowcount, 'record(s) update')
 
